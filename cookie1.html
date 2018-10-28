@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>cookie</title>
+	<meta charset="utf-8">
+	<meta name="keyword" content="cookie">
+	<meta name="descript" content="cookie">
+	<script type="text/javascript">
+	window.onload = function(){
+		setCookie('user','161110155',1);
+		setCookie('password','161110144',1);
+		setCookie('QQ','161110133',1);
+		setCookie('WeChat','161110122',1);
+		setCookie('E-Mail','161110111',1);
+
+		var arr = document.cookie.split('; ');
+		for(var i in arr){
+			var arr2 = arr[i].split('=');
+			if(arr2[0] == 'user')
+				alert(arr2[1]);
+		}
+		setCookie('user','1',-1);
+		alert(document.cookie);
+	}
+	function setCookie(name,value,date){
+		var oDate = new Date();
+		oDate.setDate(oDate.getDate()+date);
+		document.cookie = name+' = '+value+'; expires = '+oDate;
+	}
+	</script>
+</head>
+<body>
+	该实例是本地测试，用firefox测试，chrom，IE等无法完成本地cookie测试
+</body>
+</html>
+<!--本例子演示，怎么将一个页面的信息加入cookie，即怎么设置cookie，怎么获取cookie，怎么删除cookie-->

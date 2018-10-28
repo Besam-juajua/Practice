@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>自动吸附</title>
+	<style type="text/css">
+		div{
+			width: 250px;
+			height: 250px;
+			background: red;
+			position: absolute;
+		}
+	</style>
+	<script type="text/javascript">
+	//鼠标拖拽事件
+		window.onload=function(){
+			var oDiv=document.getElementsByTagName('div')[0];
+			oDiv.onmousedown=function(ev){
+				var oEvent=ev||event;
+				var ox=oEvent.clientX-oDiv.offsetLeft;
+				var oy=oEvent.clientY-oDiv.offsetTop;
+				oDiv.style.left=oEvent.clientX-ox+'px';
+				oDiv.style.top=oEvent.clientY-oy+'px';
+				if(oDiv.setCapture){
+					oDiv.onmousemove=function(ev){
+						var oEvent=ev||event;
+						var flag=document.clientX
+						var X=oEvent.clientX-ox;
+						var Y=oEvent.clientY-oy;
+						if(X<50)
+							X=0;
+						else if(X>document.documentElement.clientWidth-oDiv.offsetWidth-50)
+							X=document.documentElement.clientWidth-oDiv.offsetWidth;
+						if(Y<50)
+							Y=0;
+						else if(Y>document.documentElement.clientHeight-oDiv.offsetHeight-50)
+							Y=document.documentElement.clientHeight-oDiv.offsetHeight;
+						oDiv.style.left=X+'px';
+						oDiv.style.top=Y+'px';
+					}
+					oDiv.onmouseup=function(){
+						oDiv.onmousemove=null;
+						oDiv.onmouseup=null;
+						oDiv.releaseCapture();
+					}
+					oDiv.setCapture();
+					return false;
+				}
+				else{
+					document.onmousemove=function(ev){
+						var oEvent=ev||event;
+						var flag=document.clientX
+						var X=oEvent.clientX-ox;
+						var Y=oEvent.clientY-oy;
+						if(X<50)
+							X=0;
+						else if(X>document.documentElement.clientWidth-oDiv.offsetWidth-50)
+							X=document.documentElement.clientWidth-oDiv.offsetWidth;
+						if(Y<50)
+							Y=0;
+						else if(Y>document.documentElement.clientHeight-oDiv.offsetHeight-50)
+							Y=document.documentElement.clientHeight-oDiv.offsetHeight;
+						oDiv.style.left=X+'px';
+						oDiv.style.top=Y+'px';
+					}
+					document.onmouseup=function(){
+						this.onmousemove=null;
+						this.onmouseup=null;
+					}
+					return false;
+				}
+			}	
+			
+		}
+	</script>
+</head>
+<body>
+jdfkjklsdjfksj <br>
+jdfkjdskljfklsdjf <br>
+hdfkjdsfksdf <br>
+iuritwpwepokl <br>
+<div>拉我慢慢靠近窗口边缘，看我吸附的能力，而且我经过屏幕的其他文字，不会把它们选中</div>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>命名空间理解</title>
+	<meta charset="utf-8">
+	<meta name="keyword" content="命名,空间">
+	<meta name="descript" content="命名空间">
+	<script type="text/javascript">
+	window.onload = function(){
+		Json.common.getUser();
+		Json.fx.getUser();
+		Json.site.getUser();
+	}
+	var Json = {};
+	Json.common = {};
+	Json.fx = {};
+	Json.site = {};
+	Json.common.getUser = function(){
+		alert('this is common');
+	}
+	Json.fx.getUser = function(){
+		alert('this is fx');
+	}
+	Json.site.getUser = function(){
+		alert('this is site');
+	}
+	</script>
+</head>
+<body>
+演示了javascript的命名空间的理解
+</body>
+</html>

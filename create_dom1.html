@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>创建节点操作1</title>
+	<style type="text/css">
+		
+	</style>
+	<script type="text/javascript">
+		window.onload=function(){
+			var oTx=document.getElementById('txt_1');
+			var oBt=document.getElementById('btn_1');
+			var oUltwo=document.getElementById('ul_2');
+			var ooLi=oUltwo.getElementsByTagName('li');
+			oBt.onclick=function(){
+				var Li=document.createElement('li');
+				Li.innerHTML=oTx.value;
+				//oUltwo.appendChild(Li); //尾插入元素
+				oUltwo.insertBefore(Li,ooLi[0]); //头插入元素
+			}
+
+
+
+			var oUlone=document.getElementById('ul_1');
+			var oLi=oUlone.getElementsByTagName('li');
+			var oA=document.getElementsByTagName('a');
+			for(var i=0;i<oA.length;i++){
+				oA[i].onclick=function(){
+					oUlone.removeChild(this.parentNode); //删除元素
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+<div ic="div_1">
+	<input id="txt_1" type="text">
+	<input id="btn_1" type="button" value="创建li">
+	<ul id="ul_2">
+	</ul>
+
+	<br>
+	<ul id="ul_1">
+		<li>看到了是解放立刻撒旦解放 <a href="#">删除</a></li>
+		<li>他撒解放连接的时尚大方开 <a href="#">删除</a></li>
+		<li>开始的发生的纠纷的书法家 <a href="#">删除</a></li>
+		<li>额技术开发就开始大哭哦对 <a href="#">删除</a></li>
+		<li>地方艰苦的方式就看附件就 <a href="#">删除</a></li>
+		<li>下说法萨芬地方都是地方发 <a href="#">删除</a></li>
+	</ul>
+</div>
+</body>
+</html>

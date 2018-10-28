@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>搜索模拟</title>
+	<style type="text/css">
+	</style>
+	<script type="text/javascript">
+	//搜索记录
+		window.onload=function(){
+			var oTab=document.getElementsByTagName('table')[0];
+			var oBtn=document.getElementById('button_1');
+			var oTr=document.getElementsByTagName('tr');
+			var oTex=document.getElementById('text_1');
+			
+			oBtn.onclick=function(){
+				for(var i=0; i<oTab.tBodies[0].rows.length;i++){
+					var flagBack=oTab.tBodies[0].rows[i].style.background;
+					oTab.tBodies[0].rows[i].style.background='';
+					//if(oTab.tBodies[0].rows[i].cells[1].innerHTML.toLowerCase()==oTex.value.toLowerCase())  //不区分大小写搜索
+					//	oTab.tBodies[0].rows[i].style.background='yellow';
+					//if(oTab.tBodies[0].rows[i].cells[1].innerHTML.search(oTex.value)!=-1)
+						//模糊词搜索
+					//	oTab.tBodies[0].rows[i].style.background='yellow';
+					var sTxt=oTex.value.toLowerCase();
+					var arr=sTxt.split(' ');
+					for(var j=0;j<arr.length;j++){
+						if(oTab.tBodies[0].rows[i].cells[1].innerHTML.toLowerCase().search(arr[j])!=-1)
+							oTab.tBodies[0].rows[i].style.background='yellow';
+					}
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+<input id="text_1" type="text">
+<input id="button_1" type="button" value="搜索"><br><br>
+<table border="1px" width="400px">
+	<thead>
+		<td>编号</td>
+		<td>姓名</td>
+		<td>年龄</td>
+		<td>学号</td>
+		<td>操作</td>
+	</thead>
+	<tbody>
+		<tr>
+			<td>1</td>
+			<td>张三</td>
+			<td>27</td>
+			<td>161110</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>John</td>
+			<td>28</td>
+			<td>161111</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>3</td>
+			<td>王五</td>
+			<td>29</td>
+			<td>161112</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>4</td>
+			<td>Lisby</td>
+			<td>30</td>
+			<td>161113</td>
+			<td></td>
+		</tr>
+	</tbody>
+	
+
+</table>
+</body>
+</html>

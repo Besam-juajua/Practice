@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>BOM应用之open和close</title>
+	<meta charset="utf-8">
+	<meta name="keyword" content="BOM,open,close">
+	<meta name="descript" content="open和close">
+	<script type="text/javascript">
+		window.onload = function(){
+			var oTxt = document.getElementsByTagName('textarea')[0];
+			var oBtn = document.getElementsByTagName('input')[0];
+			oBtn.onclick = function(){
+				var oNewWin = window.open('about_blank','_blank');
+				oNewWin.document.write(oTxt.value);
+			}
+			
+		}
+	</script>
+</head>
+<body>
+<div style="width: 300px; margin: 10px auto;">
+	你可以在里面写html，然后open
+	<textarea rows="10" cols="40" id="Textarea"></textarea><br>
+	<input type="button" name="button_open" value="open">
+</div>
+
+</body>
+</html>
+
+<!--在textarea中放入该代码，会发现可以关闭页面
+<!DOCTYPE html>
+<html>
+<head>
+	<title>BOM应用之open和close</title>
+	<meta charset="utf-8">
+	<meta name="keyword" content="BOM,open,close">
+	<meta name="descript" content="open和close">
+</head>
+<body>
+<div style="width: 100px; margin: 10px auto;">
+	<input type="button" name="button_close" value="close" onclick='window.close()'>
+</div>
+
+</body>
+</html>
+-->

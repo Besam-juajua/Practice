@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>javascript的继承</title>
+	<meta charset="utf-8">
+	<meta name="keyword" content="继承">
+	<meta name="descript" content="javascript的继承">
+	<script type="text/javascript">
+	window.onload = function(){
+		var c = new B('林志雄','21');
+		c.showName();
+		c.showValue();
+		c.showOther();
+		var d = new B('Besam','22');
+		d.showName();
+		d.showValue();
+		d.showOther();
+		alert(c.showName === d.showName);
+
+	}
+		function A(name, value){
+			this.name = name;
+			this.value = value;
+		}
+		A.prototype.showName = function(){
+			alert('name = '+this.name);
+		}
+		A.prototype.showValue = function(){
+			alert('value = '+this.value);
+		}
+		function B(name, value){
+			A.call(this, name, value);
+		}
+		for(var i in A.prototype){
+			B.prototype[i] = A.prototype[i];
+		}
+		B.prototype.showOther = function(){
+			alert('you are success!');
+		}
+	</script>
+</head>
+<body>
+演示了javascript的继承
+</body>
+</html>

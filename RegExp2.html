@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>正则表达式的过滤应用</title>
+	<meta charset="utf-8">
+	<meta name="keyword" content="正则,过滤">
+	<meta name="descript" content="正则表达式的过滤应用">
+	<script type="text/javascript">
+	window.onload = function(){
+		var oBtn = document.getElementsByTagName('input')[0];
+		var oTxt = document.getElementsByTagName('textarea');
+		oBtn.onclick = function(){
+			var re = /垃圾|阿三|傻逼/g;
+			oTxt[1].value = oTxt[0].value.replace(re,'');
+		}
+	}
+	</script>
+</head>
+<body>
+可以在里面输入包含‘垃圾’‘阿三’‘傻逼’这三个词的，我将把它过滤掉</br>
+<textarea rows="10" cols="30"></textarea><br>
+<input type="button" name="button1" value="过滤"><br>
+<textarea rows="10" cols="30" style="border:3px dashed blue"></textarea>
+</body>
+</html>
+<!--这个例子，演示了正则表达式的实际用法-->

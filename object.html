@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>javascript的面向对象</title>
+	<meta charset="utf-8">
+	<meta name="keyword" content="对象,过程">
+	<meta name="descript" content="面向过程转化为面向对象">
+	<script type="text/javascript">
+	window.onload=function(){
+		var obj1 = new createPerson('lin','11');
+		var obj2 = new createPerson('zhang','22');
+		alert(obj1.showName === obj2.showName);
+		alert(obj1.name === obj2.name);
+	}
+	function createPerson(name, QQ){
+			this.name = name;
+			this.QQ = QQ;
+	}
+	createPerson.prototype.showName = function(){
+		alert('My name is '+this.name);
+	}
+	createPerson.prototype.showQQ = function(){
+		alert('My QQ is '+this.QQ);
+	}
+	</script>
+</head>
+<body>
+<div style="width: 200px; height: 200px; background: yellow">演示了javascript的面向对象</div>
+</body>
+</html>

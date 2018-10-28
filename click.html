@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>点击出现与消失</title>
+	<style type="text/css">
+		div{
+			width: 400px;
+			height: 400px;
+			background: gray;
+			display: none;
+		}	
+	</style>
+	<script type="text/javascript">
+	//解决事件冒泡:oEvent.cancelBubble=true;
+		window.onload=function(){
+			var oBtn=document.getElementsByTagName("input")[0];
+			var oDiv=document.getElementsByTagName("div")[0];
+			oBtn.onclick=function(ev){
+				var oEvent=ev||event;
+				oDiv.style.display='block';
+				oEvent.cancelBubble=true;
+			}
+			oDiv.onclick=function(ev){
+				var oEvent=ev||event;
+				oEvent.cancelBubble=true; //IE浏览器阻止冒泡
+				oEvent.stopPropagation(); //其他浏览器阻止冒泡
+			}
+			document.onclick=function(){
+				oDiv.style.display='none';
+			}
+		}
+	</script>
+</head>
+<body>
+<input type="button" value="显示"><br>
+<div>我出现了，你在点击外面空白处，我就会消失</div>
+</body>
+</html>

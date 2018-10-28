@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>防抖动</title>
+	<style type="text/css">
+		#div_1{
+			width: 100px;
+			height: 200px;
+			position: absolute;
+			right: 0px;
+			bottom: 0px;
+			background: red;
+		}
+	</style>
+	<script type="text/javascript">
+	//防抖动地在缓冲至页低或中悬浮
+		var timer=null;
+		window.onscroll=function(){
+			var oDiv=document.getElementById('div_1');
+			var scrollTop=document.documentElement.scrollTop||document.body.scrollTop;
+			startMove(parseInt((document.documentElement.clientHeight-oDiv.offsetHeight)/2+scrollTop));
+		}
+		function startMove(flag){
+			var oDiv=document.getElementById('div_1');
+			clearInterval(timer);
+			timer=setInterval(function(){
+				var speed=(flag-oDiv.offsetTop)/7;
+				speed=speed>0?Math.ceil(speed):Math.floor(speed);
+				if(oDiv.offsetTop==flag){
+					clearInterval(timer);
+				}
+				else{
+					oDiv.style.top=oDiv.offsetTop+speed+'px';
+				}
+			},30);
+		}
+	</script>
+</head>
+<body style="height: 2000px;">
+<div id="div_1">
+	
+</div>
+</body>
+</html>

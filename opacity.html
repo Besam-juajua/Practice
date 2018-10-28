@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>渐深渐淡</title>
+	<style type="text/css">
+	#div_1{
+		width: 200px;
+		height: 200px;
+		margin: 150px auto;
+		background: blue;
+		opacity: 0.3;
+		filter:alpha(opacity:30);
+	}
+	</style>
+	<script type="text/javascript">
+	//图片透明渐变
+		window.onload=function(){
+			var oDiv=document.getElementById('div_1');
+			oDiv.onmouseover=function(){
+				starMove(100);
+			}
+			oDiv.onmouseout=function(){
+				starMove(30);
+			}
+		}
+		
+		var timer;
+		var alpha=30;
+		function starMove(flag){
+			var oDiv=document.getElementById('div_1');
+			if(alpha<flag){
+				speed=10;
+			}
+			else{
+				speed=-10;
+			}
+			clearInterval(timer);
+			timer=setInterval(function(){
+				if(alpha==flag){
+					clearInterval(timer);
+				}
+				else{
+					alpha+=speed;
+					oDiv.style.filter='alpha(opacity:'+alpha+')';
+					oDiv.style.opacity=alpha/100;
+				}
+			},30);	
+		}
+	</script>
+</head>
+<body>
+<div id="div_1">
+	This is a div
+</div>
+</body>
+</html>

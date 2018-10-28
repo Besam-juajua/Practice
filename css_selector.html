@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>css选择器</title>
+	<style type="text/css">
+		
+	</style>
+	<script type="text/javascript">
+	window.onload=function(){
+		var oDiv=document.getElementById('div_1');
+		var oUl=document.getElementById('ull');
+		function getByClass(oDiv,aClass){
+			var result=[];
+			var oDivChild=oDiv.getElementsByTagName('*');
+			for(var i=0;i<oDivChild.length;i++){
+				if(oDivChild[i].className==aClass)
+					result.push(oDivChild[i]);
+			}
+			return result;
+		}
+		var oLi=getByClass(oUl, 'lili');
+		for(var i=0;i<oLi.length;i++){
+			oLi[i].style.background='red';
+		}
+	}
+	
+	</script>
+</head>
+<body>
+<div id="div_1">
+	<ul id="ull">
+		<li class="lili"></li>
+		<li class="lili"></li>
+		<li></li>
+		<li class="lili"></li>
+		<li></li>
+	</ul>
+</div>
+</body>
+</html>

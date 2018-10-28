@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>正则表达式</title>
+	<meta charset="utf-8">
+	<meta name="keyword" content="正则">
+	<meta name="descript" content="正则表达式">
+	<script type="text/javascript">
+	window.onload = function(){
+		var str = "abC-123 -oap-obpobp-DAs-ocp33-7Jodplkogpja888880888o";
+		//var re = new RegExp('a','i');
+		var re = /o[abc]p/g;
+		//var re = /\w+/g;
+		//var re = /[^0-9a-c]+/gi;
+		//var re = /-./g;
+		//var re = /8{4}/g;
+		//var re = /8{3,5}/g;
+		//var re = /ob?/g; 
+		//var re = /ob*/g; 
+		alert(str.match(re));
+	}
+	</script>
+</head>
+<body>
+演示了正则表达式
+</body>
+</html>
+<!--这个例子，演示了正则表达式的使用方法-->

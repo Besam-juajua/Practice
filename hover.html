@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>仿QQ的hover</title>
+	<style type="text/css">
+		div{
+			float: left;
+			margin: 10px;
+		}
+		#div_1{
+			height: 50px;
+			line-height: 50px;
+			background: pink;
+			background-color: blue;
+		}
+		#div_2{
+			width: 200px;
+			height: 100px;
+			background: gray;
+			display: none;
+		}
+	</style>
+	<script type="text/javascript">
+		var timer;
+		window.onload=function(){
+			var oDiv_1=document.getElementById('div_1');
+			var oDiv_2=document.getElementById('div_2');
+			oDiv_2.onmouseover=oDiv_1.onmouseover=function(){
+				oDiv_2.style.display='block';
+				clearTimeout(timer);
+			}
+			oDiv_2.onmouseout=oDiv_1.onmouseout=function(){
+				timer=setTimeout(function(){
+				oDiv_2.style.display='none';
+				},500);
+			}
+		}
+	</script>
+</head>
+<body>
+<div id="div_1">鼠标停留</div>
+<div id="div_2">鼠标停留在我们之上，我显示，否则，我过一会就消失</div>
+</body>
+</html>

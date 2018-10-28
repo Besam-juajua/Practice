@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>运动6</title>
+	<style type="text/css">
+		div{
+			width: 200px;
+			height: 200px;
+			background: yellow;
+			float: left;
+			margin: 10px;
+		}
+		#div_4{
+			filter: alpha(opacity:30);
+			opacity: 0.3;
+		}
+		#div_5{
+			border: 10px solid black;
+		}
+	</style>
+	<script type="text/javascript">
+	//多运动不同属性，整合为一函数
+		window.onload=function(){
+			var oDiv=document.getElementsByTagName('div');
+				oDiv[0].timer=null;
+				oDiv[0].onmouseover=function(){
+					startMove(this,'height',500);
+				}
+				oDiv[0].onmouseout=function(){
+					startMove(this,'height',200)
+				}
+				oDiv[1].timer=null;
+				oDiv[1].onmouseover=function(){
+					startMove(this,'width',500)
+				}
+				oDiv[1].onmouseout=function(){
+					startMove(this,'width',200)
+				}
+				oDiv[2].timer=null;
+				oDiv[2].onmouseover=function(){
+					startMove(this,'fontSize',50)
+				}
+				oDiv[2].onmouseout=function(){
+					startMove(this,'fontSize',14)
+				}
+				oDiv[3].timer=null;
+				oDiv[3].onmouseover=function(){
+					startMove(this,'opacity',100)
+				}
+				oDiv[3].onmouseout=function(){
+					startMove(this,'opacity',30)
+				}
+				oDiv[4].timer=null;
+				oDiv[4].onmouseover=function(){
+					startMove(this,'borderWidth',100)
+				}
+				oDiv[4].onmouseout=function(){
+					startMove(this,'borderWidth',10)
+				}
+		}
+		function getStyle(obj,name){
+			if(obj.currentStyle){
+				if(name=='opacity'){
+					return parseFloat(obj.currentStyle[name]);
+				}
+				else{
+					return parseInt(obj.currentStyle[name]);
+				}
+				
+			}
+			else{
+				if(name=='opacity'){
+					return parseFloat(getComputedStyle(obj,false)[name]);
+				}
+				else{
+					return parseInt(getComputedStyle(obj,false)[name]);
+				}
+			}
+		}
+		function startMove(obj,name,flag){
+			clearInterval(obj.timer);
+			obj.timer=setInterval(function(){
+				if(name=='opacity'){
+					var speed=(flag-getStyle(obj,name)*100)/6;
+				}
+				else{
+					var speed=(flag-getStyle(obj,name))/6;
+				}
+				
+				speed=speed>0?Math.ceil(speed):Math.floor(speed);
+				if(Math.round(getStyle(obj,name)*100)==flag){
+					clearInterval(obj.timer);
+				}
+				else{
+					if(name=='opacity'){
+						obj.style.filter='alpha(opacity:'+Math.round(getStyle(obj,name)*100)+speed+')';
+						obj.style[name]=(Math.round(getStyle(obj,name)*100)+speed)/100;
+						document.getElementById('text_1').value=obj.style.opacity;
+					}
+					else{
+						obj.style[name]=getStyle(obj,name)+speed+'px';
+					}
+				}
+			},30);
+		}
+	</script>
+</head>
+<body>
+<div></div>
+<div></div>
+<div>dsfdsfsdfsdafsdafads</div>
+<div id="div_4"></div>
+<div id="div_5"></div>
+<input type="text" id="text_1"/>
+</body>
+</html>

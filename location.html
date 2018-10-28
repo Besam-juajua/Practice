@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>浏览器信息和重定址</title>
+	<meta charset="utf-8">
+	<meta name="keyword" content="window.navigator.userAgent,location">
+	<meta name="descript" content="window.navigator.userAgent显示浏览器信息和window.location重定址">
+	<script type="text/javascript">
+		window.onload = function(){
+			var oBtn = document.getElementsByTagName('input')[0];
+			alert('这是Navigator的userAgent信息:'+window.navigator.userAgent);
+			oBtn.onclick = function(){
+				window.location = 'https://besam-juajua.github.io';
+			}
+			
+		}
+	</script>
+</head>
+<body>
+<div style="width: 300px; margin: 10px auto;">
+点击，用window.location进行重定向</br>
+	<input type="button" name="button_location" value="location">
+</div>
+
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>快捷键设置</title>
+	<style type="text/css">
+		
+	</style>
+	<script type="text/javascript">
+	//enter\ctrl+enter等提交事件
+		window.onload=function(){
+			var oTxt_1=document.getElementById("txt_1");
+			var oTxt_2=document.getElementById("txt_2");
+			var oBtn=document.getElementById("btn_1");
+
+			oTxt_1.value=null;
+			oTxt_2.value=null;
+
+			oBtn.onclick=function(){
+				oTxt_2.value+=oTxt_1.value+'\n';
+				oTxt_1.value=null;
+			}
+			oTxt_1.onkeydown=function(ev){
+				var oEvent=ev||event;
+				if(oEvent.keyCode==13 && oEvent.ctrlKey){
+					oTxt_2.value+=oTxt_1.value+'\n';
+					oTxt_1.value=null;
+				}
+			}
+
+		}
+	</script>
+</head>
+<body>
+请输入数据，按‘ctrl+enter’可以提交</br>
+<input id="txt_1" type="text">
+<input id="btn_1" type="button" value="提交"><br>
+<textarea id="txt_2" rows="10" cols="40" readonly="readonly"></textarea>
+</body>
+</html>

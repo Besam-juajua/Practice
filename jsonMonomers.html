@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Json单体</title>
+	<meta charset="utf-8">
+	<meta name="keyword" content="单体">
+	<meta name="descript" content="面向对象之Json单体">
+	<script type="text/javascript">
+	window.onload = function(){
+		Json.showName();
+		Json.showQQ();
+	}
+	var Json = {
+		name:'linzhixiong',
+		QQ:'1695744322',
+		showName:function(){
+			alert('My name is '+this.name);
+		},
+		showQQ:function(){
+			alert('My QQ is '+this.QQ);
+		}
+	}
+	
+	</script>
+</head>
+<body>
+<div style="width: 200px; height: 200px; background: yellow">演示了JSon单体</div>
+</body>
+</html>

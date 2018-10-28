@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>运动2</title>
+	<style type="text/css">
+		#div_1{
+			width: 200px;
+			height: 200px;
+			position: absolute;
+			left: 800px;
+			top: 50px;
+			background: red;
+		}
+		#div_2{
+			width: 1px;
+			height: 300px;
+			position: absolute;
+			left: 450px;
+			top: 0px;
+			background: black;
+		}
+	</style>
+	<script type="text/javascript">	
+	//缓冲运动
+		var timer=null;
+		window.onload=function(){
+			var oDiv=document.getElementById('div_1');
+			var oBtn=document.getElementById('button_1');
+			oBtn.onclick=function(){
+				startMove(450);
+			}
+		}
+
+		function startMove(flag){
+			var oDiv=document.getElementById('div_1');
+			var oBtn=document.getElementById('button_1');
+			clearInterval(timer);
+			timer=setInterval(function(){
+				if(oDiv.offsetLeft>flag){
+					var speed=Math.floor((flag-oDiv.offsetLeft)/10);
+				}
+				else{
+					var speed=Math.ceil((flag-oDiv.offsetLeft)/10);
+				}
+				
+				if(oDiv.offsetLeft==flag){
+					clearInterval(timer);
+				}
+				else{
+					oDiv.style.left=oDiv.offsetLeft+speed+'px';
+				}
+			},30);
+		}
+	</script>
+</head>
+<body>
+<input id="button_1" type="button" value="开始运动">
+<div id="div_1">
+</div>
+<div id="div_2"></div>
+</body>
+</html>

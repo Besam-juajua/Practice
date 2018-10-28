@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>显示当前时间</title>
+	<style type="text/css">
+	#div_1{
+		width: 530px; 
+		margin: 200px auto;
+	}
+	</style>
+	<script type="text/javascript">
+	var imge=document.getElementsByTagName('img');
+	var dates=new Date();
+
+	window.onload=function (){
+
+		function swap(n){
+			if(n<10)
+				return '0'+n;
+			else
+				return ''+n;
+		}
+
+		function tick(){
+			var date=new Date();
+			var str=swap(date.getHours())+swap(date.getMinutes())+swap(date.getSeconds());
+			for(var i=0;i<imge.length;i++){
+					imge[i].src='img/'+str.charAt(i)+'.png'		
+			}
+		}
+
+		setInterval(tick,1000);
+		tick();
+		alert(dates.getFullYear()+'年'+(dates.getMonth()+1)+'月'+dates.getDate()+'日,'+'星期'+dates.getDay());
+	}
+	</script>
+</head>
+<body style="background: black; color:white; font-size: 50px;">
+<div id="div_1">
+	<img src="img/0.png" width="50" height="100">
+	<img src="img/0.png" width="50" height="100">:
+	<img src="img/0.png" width="50" height="100">
+	<img src="img/0.png" width="50" height="100">:
+	<img src="img/0.png" width="50" height="100">
+	<img src="img/0.png" width="50" height="100">
+</div>
+</body>
+</html>

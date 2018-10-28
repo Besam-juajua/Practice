@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>运动3</title>
+	<style type="text/css">
+		#div_1{
+			width: 150px;
+			height: 150px;
+			position: absolute;
+			left: 700px;
+			top: 50px;
+			background: red;
+		}
+		#div_2{
+			width: 1px;
+			height: 250px;
+			position: absolute;
+			left: 150px;
+			top: 0px;
+			background: black;
+		}
+		#div_3{
+			width: 1px;
+			height: 250px;
+			position: absolute;
+			left: 400px;
+			top: 0px;
+			background: black;
+		}
+	</style>
+	<script type="text/javascript">
+	//匀速运动防抖动
+		var timer=null;
+		window.onload=function(){
+			var oBtn1=document.getElementById('button_1');
+			var oBtn2=document.getElementById('button_2');
+			oBtn1.onclick=function(){
+				startMove(150);
+			}
+			oBtn2.onclick=function(){
+				startMove(400);
+			}
+		}
+		function startMove(flag){
+			var oDiv=document.getElementById('div_1');
+
+			clearInterval(timer);
+			timer=setInterval(function(){
+				if(oDiv.offsetLeft<flag){
+					speed=7;
+				}
+				else{
+					speed=-7;
+				}
+				if(Math.abs(oDiv.offsetLeft-flag)<7){
+					clearInterval(timer);
+					oDiv.style.left=flag+'px';
+				}
+				else{
+					oDiv.style.left=oDiv.offsetLeft+speed+'px';
+				}
+			},30);
+		}
+	</script>
+</head>
+<body>
+<input id="button_1" type="button" value="150运动">
+<input id="button_2" type="button" value="300运动">
+<div id="div_1"></div>
+<div id="div_2"></div>
+<div id="div_3"></div>
+</body>
+</html>

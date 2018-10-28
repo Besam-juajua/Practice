@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>运动10</title>
+	<meta charset="utf-8">
+	<meta name="keyword" content="继承,拖拽,运动">
+	<meta name="descript" content="继承拖拽运动实例">
+	<style type="text/css">
+		*{
+				margin: 0px;
+				padding: 0px;
+			}
+		</style>
+	<script type="text/javascript">
+			function Drag(id){
+				var _this = this;
+				var disX = 0;
+				var disY = 0;
+				this.oDiv = document.getElementById(id);
+				this.oDiv.onmousedown = function(ev){
+					_this.Down(ev);
+					return false;
+				}
+				
+			}
+			Drag.prototype.Down = function(ev){
+				var _this = this;
+				var Event = ev || event;
+				this.disX = Event.clientX - this.oDiv.offsetLeft;
+				this.disY = Event.clientY - this.oDiv.offsetTop;
+
+				document.onmousemove = function(ev){
+					_this.Move(ev);
+				}
+				document.onmouseup = function(ev){
+					_this.Up(ev);
+				}
+			}
+			Drag.prototype.Move = function(ev){
+				var Event = ev || event;
+				this.oDiv.style.left = Event.clientX - this.disX + 'px';
+				this.oDiv.style.top = Event.clientY - this.disY + 'px';
+
+			}
+			Drag.prototype.Up = function(ev){
+				document.onmousedown = null;
+				document.onmousemove = null;
+			}
+
+	function LimitDrag(id){
+		Drag.call(this,id);
+	}
+	for(var i in Drag.prototype){
+		LimitDrag.prototype[i] = Drag.prototype[i];
+	}
+	LimitDrag.prototype.Move = function(ev){
+		var Event = ev || event;
+		var l = Event.clientX - this.disX;
+		var t = Event.clientY - this.disY
+		if(l<0)
+			l = 0;
+		if(t<0)
+			t = 0;
+		this.oDiv.style.left = l + 'px';
+		this.oDiv.style.top = t + 'px';
+		
+	}
+	window.onload = function(){
+		new Drag('Div1');
+		new LimitDrag('Div2');
+	}
+		
+	</script>
+</head>
+<body>
+	演示了继承‘拖拽运动’的实例
+<div id="Div1" style="width: 200px; height: 200px; background: yellow; position: absolute;">这是一个可以出界的盒子</div>
+<div id="Div2" style="width: 200px; height: 200px; background: green; position: absolute;">这是一个被限制出左界和上界的盒子</div>
+</body>
+</html>

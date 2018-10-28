@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>创建节点操作2</title>
+	<style type="text/css">
+		
+	</style>
+	<script type="text/javascript">
+	//添加删除记录
+		window.onload=function(){
+			var oTab=document.getElementsByTagName('table')[0];
+			var oTex1=document.getElementById('text_1');
+			var oTex2=document.getElementById('text_2');
+			var oTex3=document.getElementById('text_3');
+			var oBtn=document.getElementById('button_1');
+			var oA=document.getElementsByTagName('a');
+			var length=4;
+			oBtn.onclick=function(){
+				var oTr=document.createElement('tr');
+				var oTd=document.createElement('td');
+				oTd.innerHTML=++length;
+				oTr.appendChild(oTd);
+				var oTd=document.createElement('td');
+				oTd.innerHTML=oTex1.value;
+				oTr.appendChild(oTd);
+				var oTd=document.createElement('td');
+				oTd.innerHTML=oTex2.value;
+				oTr.appendChild(oTd);
+				var oTd=document.createElement('td');
+				oTd.innerHTML=oTex3.value;
+				oTr.appendChild(oTd);
+				var oTd=document.createElement('td');
+				oTd.innerHTML='<a href="javascript:;">删除</a>';
+				oTd.getElementsByTagName('a')[0].onclick=function(){
+					oTab.tBodies[0].removeChild(this.parentNode.parentNode);
+				}
+				oTr.appendChild(oTd);
+				oTab.tBodies[0].appendChild(oTr);
+			}
+			
+		}
+	</script>
+</head>
+<body>
+姓名：<input id="text_1" type="text" size="8" maxlength="5">
+年龄：<input id="text_2" type="text" size="8" maxlength="3">
+学号：<input id="text_3" type="text" size="8" maxlength="6">
+<input id="button_1" type="button" value="添加"><br><br>
+<table border="1px" width="400px">
+	<thead>
+		<td>编号</td>
+		<td>姓名</td>
+		<td>年龄</td>
+		<td>学号</td>
+		<td>操作</td>
+	</thead>
+	<tbody>
+		<tr>
+			<td>1</td>
+			<td>张三</td>
+			<td>27</td>
+			<td>161110</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>李四</td>
+			<td>28</td>
+			<td>161111</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>3</td>
+			<td>王五</td>
+			<td>29</td>
+			<td>161112</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>4</td>
+			<td>赵六</td>
+			<td>30</td>
+			<td>161113</td>
+			<td></td>
+		</tr>
+	</tbody>
+	
+
+</table>
+</body>
+</html>

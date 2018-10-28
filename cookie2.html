@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>cookie的记住密码应用</title>
+	<meta charset="utf-8">
+	<meta name="keyword" content="cookie">
+	<meta name="descript" content="cookie">
+	<script type="text/javascript">
+	window.onload = function(){
+		var oForm = document.getElementsByTagName('form')[0];
+		var oUser = document.getElementsByTagName('input');
+		oForm.onsubmit = function(){
+			setCookie('user',oUser[0].value,1);
+			setCookie('password',oUser[1].value,1);
+		}
+		var arr = document.cookie.split('; ');
+		for(var i in arr){
+			var arr2 = arr[i].split('=');
+			if(arr2[0] == 'user')
+				oUser[0].value = arr2[1];
+			if(arr2[0] == 'password')
+				oUser[1].value = arr2[1];
+		}
+		
+	}
+	function setCookie(name,value,date){
+		var oDate = new Date();
+		oDate.setDate(oDate.getDate()+date);
+		document.cookie = name+' = '+value+'; expires = '+oDate;
+	}
+	</script>
+</head>
+<body>
+	该实例是本地测试，用firefox测试，chrom，IE等无法完成本地cookie测试
+<form action="http://www.baidu.com" method="Get" >
+	账户：<input type="text" name="user"><br>
+	密码：<input type="password" name="password"><br>
+	<input type="submit" name="send" value="提交">
+</form>
+
+
+</body>
+</html>
+<!--本例子演示cookie的实际应用-->

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>BOM绝对定位在右下角</title>
+	<meta charset="utf-8">
+	<meta name="keyword" content="绝对定位">
+	<meta name="descript" content="BOM绝对定位在右下角">
+	<style type="text/css">
+		body{
+			margin: 0;
+			padding: 0;
+			width: 2000px;
+			height: 2000px;
+		}
+		div{
+			width: 60px;
+			height: 200px;
+			background: red;
+			position: absolute;
+			bottom: 0;
+			right: 0;
+		}
+	</style>
+	<!--这种定位不实际，会抖动，因此在非IE6，要用position：fixed； 而在IE6，用此种方法解决，再用运动解决抖动问题-->
+	<script type="text/javascript">
+		window.onload = function(){
+			alert('本例将演示利用‘BOM’，将目标定位在右下角，之前有个案例演示的是利用‘运动’防抖动');
+			var oDiv = document.getElementById('div1');
+			window.onscroll = window.onresize = function(){
+				var hideX = document.documentElement.scrollLeft || document.body.scrollLeft;
+				var hideY = document.documentElement.scrollTop || document.body.scrollTop;
+				oDiv.style.left = hideX + document.documentElement.clientWidth - oDiv.offsetWidth + 'px';
+				oDiv.style.top = hideY + document.documentElement.clientHeight - oDiv.offsetHeight + 'px';
+			}
+			
+		}
+	</script> 
+</head>
+<body>
+<div id="div1">	
+</div>
+</body>
+</html>

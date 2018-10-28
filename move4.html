@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>运动4</title>
+	<style type="text/css">
+		div{
+			width: 100px;
+			height: 50px;
+			background: red;
+			margin: 10px;
+			border: 10px solid black;
+		}
+	</style>
+	<script type="text/javascript">
+		//多运动变宽
+		window.onload=function(){
+			var oDiv=document.getElementsByTagName('div');
+			for(var i=0; i<oDiv.length; i++){
+				this.timer=null;
+				oDiv[i].onmouseover=function(){
+					startMove(this,500);
+				}
+				oDiv[i].onmouseout=function(){
+					startMove(this,100);
+				}
+			}
+		}
+		function getStyle(obj,name){
+			if(obj.currentStyle)
+				return parseInt(obj.currentStyle[name]);
+			else
+				return parseInt(getComputedStyle(obj,false)[name]);
+		}
+		function startMove(obj,flag){
+			clearInterval(obj.timer);
+			obj.timer=setInterval(function(){
+				var speed=(flag-getStyle(obj,'width'))/6;
+				speed=speed>0?Math.ceil(speed):Math.floor(speed);
+				if(getStyle(obj,'width')==flag){
+					clearInterval(obj.timer);
+				}
+				else{
+					obj.style.width=getStyle(obj,'width')+speed+'px';
+				}
+			},30);
+		}
+	</script>
+</head>
+<body>
+<div></div>
+<div></div>
+<div></div>
+</body>
+</html>

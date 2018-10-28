@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>运动1</title>
+	<style type="text/css">
+		#div_1{
+			width: 200px;
+			height: 200px;
+			background: red;
+			position: absolute;
+			left: 0px;
+			top: 50px;
+		}
+		#div_2{
+			width: 100px;
+			height: 200px;
+			background: green;
+			position: absolute;
+			left:-100px;
+			top: 270px;
+		}
+		#div_2 span{
+			width: 20px;
+			height: 60px;
+			position: absolute;
+			left: 100px;
+			top: 70px;
+			line-height: 20px;
+			background: blue;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload=function(){
+			//图片运动，侧穿运动
+			var oBtn=document.getElementById('button_1');
+			var oDiv=document.getElementById('div_1');
+
+			var oDiv2=document.getElementById('div_2');
+			var oSpn=document.getElementById('span_1');
+
+			var timer=null;
+			oBtn.onclick=function(){
+				clearInterval(timer);
+				timer=setInterval(function(){
+					if(oDiv.offsetLeft>=300){
+						clearInterval(timer);
+					}
+					else{
+						oDiv.style.left=oDiv.offsetLeft+7+'px';
+					}
+					
+				},30);
+				
+			}
+
+			oDiv2.onmouseover=function(){
+				startMove(0);
+			}
+			oDiv2.onmouseout=function(){
+				startMove(-100);
+			}
+			function startMove(flag){
+				if(oDiv2.offsetLeft<flag){
+					speed=10;
+				}
+				else{
+					speed=-10;
+				}
+				clearInterval(timer);
+				timer=setInterval(function(){
+					if(oDiv2.offsetLeft==flag){
+						clearInterval(timer);
+					}
+					else{
+						oDiv2.style.left=oDiv2.offsetLeft+speed+'px';
+					}
+				},30);
+			}
+		}
+	</script>
+</head>
+<body>
+<input id="button_1" type="button" value="开始运动">
+<div id="div_1">	
+</div>
+<div id="div_2">
+<span id="span_1">分享到</span>
+</div>
+</body>
+</html>
